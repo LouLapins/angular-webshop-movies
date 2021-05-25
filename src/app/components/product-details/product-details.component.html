@@ -1,1 +1,6 @@
-<p>product-details works!</p>
+<div class="product-container">
+    <img [src]="product.imageUrl" alt="{{product.name}}">
+    <h3>{{product.name}} ({{product.year}})</h3>
+    <p>{{product.price}} SEK</p>
+    <p>{{product.description}}</p>
+</div>

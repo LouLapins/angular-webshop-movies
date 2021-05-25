@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 
 @Component({
@@ -7,12 +8,15 @@ import { Product } from 'src/app/models/Product';
   styleUrls: ['./print-product.component.scss']
 })
 export class PrintProductComponent implements OnInit {
-  @Input()
-  product!: Product;
+  @Input() product: Product = new Product("", 0, 0, "", "", 0, 0, new Date);
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  showDetails(): void {
+    this.router.navigate(['product', this.product.id]);
   }
 
 }

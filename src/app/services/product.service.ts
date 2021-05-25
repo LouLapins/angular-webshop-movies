@@ -28,4 +28,10 @@ export class ProductService {
     }
     
   }
+
+  getProduct(productId: number): Product {
+    let products: Product[] = JSON.parse(localStorage.getItem('products') || "0");
+
+    return products.filter((p) => p.id == productId)[0];
+  }
 }
