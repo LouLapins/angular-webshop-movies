@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-form',
@@ -8,17 +8,26 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CheckoutFormComponent implements OnInit {
 
-  addressForm = new FormGroup({
-    fname: new FormControl(''),
-    lname: new FormControl(''),
-    street: new FormControl(''),
-    streetno: new FormControl(''),
-    pcode: new FormControl(''),
-    city: new FormControl(''),
-  });
+  // addressForm = new FormGroup({
+  //   fname: new FormControl(''),
+  //   lname: new FormControl(''),
+  //   street: new FormControl(''),
+  //   streetno: new FormControl(''),
+  //   pcode: new FormControl(''),
+  //   city: new FormControl(''),
+  // });
+  addressForm = this.fb.group({
+    fname: [''],
+    lname: [''],
+    street: [''],
+    streetno: [''],
+    pcode: [''],
+    city: [''],
+    items: this.fb.array([this.fb.control('')]),
+  })
   
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
