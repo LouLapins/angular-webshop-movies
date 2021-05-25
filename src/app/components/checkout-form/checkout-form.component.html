@@ -1,0 +1,14 @@
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="First name" formControlName="fname" />
+    <input type="text" placeholder="Last name" formControlName="lname" />
+    <input type="text" placeholder="Street" formControlName="street" />
+    <input type="text" placeholder="Street number" formControlName="streetno" />
+    <input type="text" placeholder="Post code" formControlName="pcode" />
+    <input type="text" placeholder="City" formControlName="city" />
+
+    <button type="submit">Send</button>
+</form>
+
+<p>
+    {{ addressForm.value | json }}
+</p>
