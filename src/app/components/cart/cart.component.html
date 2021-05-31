@@ -1,1 +1,7 @@
-<p>cart works!</p>
+<h3>Your shopping cart</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+    <img [src]="item.imageUrl" alt="{{item.name}}">
+    <h3>{{item.name}} ({{item.year}})</h3>
+    <p>{{ item.price }} SEK</p>
+</div>
