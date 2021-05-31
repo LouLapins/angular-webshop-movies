@@ -1,4 +1,4 @@
-<div class="product-container">
+<div class="product-container" (click)="showDetails()">
     <img [src]="product.imageUrl" alt="{{product.name}}">
     <h3>{{product.name}} ({{product.year}})</h3>
     <p>{{product.price}} SEK</p>
