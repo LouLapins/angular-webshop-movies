@@ -10,6 +10,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { PrintProductComponent } from './components/print-product/print-product.component';
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CheckoutFormComponent } from './components/checkout-form/checkout-form.
     ErrorComponent,
     ProductDetailsComponent,
     PrintProductComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
