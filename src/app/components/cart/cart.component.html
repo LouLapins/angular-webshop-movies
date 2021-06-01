@@ -1,7 +1,11 @@
+<div *ngIf="cartItems.length === 0" class="emptyCart">
+    <h1>Your cart is empty.</h1>
+</div>
+
 <h3>Your shopping cart</h3>
 
-<div class="cart-item" *ngFor="let item of items">
-    <img [src]="item.imageUrl" alt="{{item.name}}">
-    <h3>{{item.name}} ({{item.year}})</h3>
-    <p>{{ item.price }} SEK</p>
+<div class="cart-item" *ngFor="let i of cartItems">
+    <img [src]="i.imageUrl" alt="{{i.name}}">
+    <h3>{{i.name}} ({{i.year}})</h3>
+    <p>{{ i.price }} SEK</p>
 </div>

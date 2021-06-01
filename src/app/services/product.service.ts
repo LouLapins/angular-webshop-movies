@@ -29,6 +29,7 @@ export class ProductService {
     
   }
 
+  //Hämta produkt ID för den produkt du klickat på
   getProduct(productId: number): Product {
     let products: Product[] = JSON.parse(localStorage.getItem('products') || "0");
 
