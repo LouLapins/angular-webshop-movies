@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Order } from '../models/Order';
+import { Order, OrderItems} from '../models/Order';
 import { Subject } from 'rxjs';
+import { Product } from '../models/Product';
 
 
 @Injectable({
@@ -9,13 +10,43 @@ import { Subject } from 'rxjs';
 })
 export class OrderService {
 
-  private orders = new Subject <Order> ();
- orderDetails$ = this.orders.asObservable();
- customerOrder: Order = new Order ("customername", "visa", 150, []);
+  orders = new Subject <Order> ();
+  orderDetails$ = this.orders.asObservable();
+  cartItems: Product[] = [];
 
-  createOrder() {
-    return this.http.post<Order>('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', this.customerOrder)
+  createOrder(name, paymentMethod) {
+    //get cartItems from LS
+    this.cartItems = JSON.parse(localStorage.getItem('cartLS'));
+
+    //calculate the total price of cart items
+    let totalPriceInCart = this.cartItems.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.price
+      }, 0)
+
+    //create an empty array for the orderRows that will later be posted
+    let orderRows = [];
+
+    //loop the cart
+
+    for (let i = 0; i < this.cartItems.length; i++) {
+      let orderInfo = new OrderItems(this.cartItems[i].id);
+      orderRows.push(orderInfo);
+      console.log(orderRows)
+    }
+
+    let date = new Date();
+
+    let newOrder = new Order(date, name, paymentMethod, totalPriceInCart, [...orderRows]);
+    
+    this.orders.next(newOrder);
+
+    this.sendOrder(newOrder);
   }
+
+  sendOrder(newOrder: Order) {
+    return this.http.post<Order>('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', newOrder)
+    .subscribe((data: Order) => { console.log(data) })
+    }
 
   constructor(private http: HttpClient) { }
 }

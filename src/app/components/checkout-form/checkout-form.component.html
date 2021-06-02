@@ -1,12 +1,15 @@
-<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="First name" formControlName="fname" />
-    <input type="text" placeholder="Last name" formControlName="lname" />
-    <input type="text" placeholder="Street address" formControlName="street" />
-    <input type="text" placeholder="Post code" formControlName="pcode" />
-    <input type="text" placeholder="City" formControlName="city" />
-    <button type="submit" [disabled]="addressForm.invalid">Send</button>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Full name" formControlName="name" />
+    <input type="text" placeholder="Phone number" formControlName="phone" />
+    <input type="text" placeholder="Email address" formControlName="email" />
+    <select name="dropdown" placeholder="Payment Method" formControlName="paymentmethod">
+        <option value="VISA">VISA</option>
+        <option value="Mastercard">Mastercard</option>
+        <option value="American Express">American Express</option>
+    </select>
+    <button type="submit" [disabled]="customerForm.invalid">Send</button>
 </form>
 
 <p>
-    {{ addressForm.value | json }}
+    {{ customerForm.value | json }}
 </p>

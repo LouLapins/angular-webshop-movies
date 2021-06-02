@@ -22,7 +22,8 @@ export class CartComponent implements OnInit {
     });
     this.cartService.getItems();
 
-    //this.totalSum = this.cartService.handleCartItems();
+    let price = this.cartService.getTotalPrice();
+    console.log(price);
   }
 
   // removeCartItem(i: number) {

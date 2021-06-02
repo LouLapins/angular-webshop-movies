@@ -23,12 +23,6 @@ export class CartService {
     }
   }
 
-  // addToCart(product: Product) {
-  //   this.items.push(product);
-  //   this.items$ = of(this.items);
-  //   localStorage.setItem('items', JSON.stringify(this.items));
-  // }
-
   getItems(): void {
     if(!localStorage.getItem('cartLS')) {
      localStorage.setItem('cartLS', JSON.stringify(this.cart));
@@ -37,13 +31,15 @@ export class CartService {
       this.cart = JSON.parse(localStorage.getItem('cartLS'));
     }
   }
-  // getItems(): Observable<Product[]>{
-  //   JSON.parse(localStorage.getItem('items'));
-  //   return of(this.items);
-  // }
 
-  // clearCart() {
-  //   this.items = [];
-  //   return this.items;
-  // }
-}
+  getTotalPrice(): number {
+      let total: number = 0;
+      this.cart.forEach((item) => (total += item.price));
+      return total;
+    }
+
+  
+
+  }
+
+
