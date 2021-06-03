@@ -1,3 +1,21 @@
+@import "../../../styles.scss";
 .product-container {
     cursor: pointer;
+    width: 90vw;
+    height: 80vh;
+    @include flexCenter(column);
+    justify-content: flex-start;
+    padding: 1rem;
+    margin: .5rem 0;
+    background-color: rgb(24, 23, 23);
+    color: white;
+    border-radius: 30px;
+    img {
+        height: 90%;
+    }
+    h5 {
+        margin: 1rem;
+        font-size: 16px;
+        font-weight: 400;
+    }
 }

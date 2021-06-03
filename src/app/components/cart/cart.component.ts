@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -9,8 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems: Product[] = [];
-  // private items = new Subject<Product[]>();
-  // items$ = this.items.asObservable();
+  totalPrice: number;
 
   constructor(private cartService: CartService) { }
 
@@ -22,11 +21,10 @@ export class CartComponent implements OnInit {
     });
     this.cartService.getItems();
 
-    let price = this.cartService.getTotalPrice();
-    console.log(price);
+    this.totalPrice = this.cartService.getTotalPrice();
   }
 
-  // removeCartItem(i: number) {
-  //   this.cartService.removeCartItem(i);
-  // }
+  removeItem(id: number) {
+    this.cartService.removeItem(id);
+  }
 }

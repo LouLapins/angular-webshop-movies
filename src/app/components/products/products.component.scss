@@ -1,0 +1,6 @@
+@import "../../../styles.scss";
+.all-products-list {
+    width: 100%;
+    flex-wrap: wrap;
+    @include flexCenter(column);
+}

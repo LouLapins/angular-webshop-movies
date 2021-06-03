@@ -32,14 +32,21 @@ export class CartService {
     }
   }
 
+  removeItem(id: number): void {
+    let cart: Product[] = JSON.parse(localStorage.getItem('cartLS'));
+    let index = this.cart.findIndex((e) => e.id == id)
+        cart.splice(index, 1);
+        localStorage.setItem('cartLS', JSON.stringify(cart));
+        this.cartSubject.next(cart);
+    
+  }
+
   getTotalPrice(): number {
       let total: number = 0;
       this.cart.forEach((item) => (total += item.price));
       return total;
     }
 
-  
-
-  }
+}
 
 
