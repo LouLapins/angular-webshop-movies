@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order, OrderItems} from '../models/Order';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Product } from '../models/Product';
 
 
@@ -14,7 +14,7 @@ export class OrderService {
   orderDetails$ = this.orders.asObservable();
   cartItems: Product[] = [];
 
-  createOrder(name, paymentMethod) {
+  createOrder(name:string, paymentMethod: string): Observable<Order> {
     //get cartItems from LS
     this.cartItems = JSON.parse(localStorage.getItem('cartLS'));
 
@@ -38,15 +38,19 @@ export class OrderService {
 
     let newOrder = new Order(date, name, paymentMethod, totalPriceInCart, [...orderRows]);
     
-    this.orders.next(newOrder);
+    // this.orders.next(newOrder);
 
-    this.sendOrder(newOrder);
+    return this.sendOrder(newOrder)
   }
 
   sendOrder(newOrder: Order) {
     return this.http.post<Order>('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', newOrder)
-    .subscribe((data: Order) => { console.log(data) })
+   
     }
+
+  clearCart(): void {
+    localStorage.removeItem('cartLS');
+  }
 
   constructor(private http: HttpClient) { }
 }

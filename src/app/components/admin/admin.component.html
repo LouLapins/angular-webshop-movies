@@ -1,3 +1,10 @@
 <div *ngFor="let o of orders">
-    <p>{{o.totalPrice}}</p>
+    <h3>Order {{o.id}}</h3>
+    <p>Order date: {{o.created}}</p>
+    <p>{{o.orderRows.length}} items</p>
+    <ul *ngFor="let i of o.orderRows">
+        <li>Product ID {{i.productId}}</li>
+    </ul>
+    <p>Total amount paid: {{o.totalPrice}} SEK</p>
+    <p>Payment Method: {{o.paymentMethod}}</p>
 </div>

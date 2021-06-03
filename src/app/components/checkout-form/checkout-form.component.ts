@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Order } from 'src/app/models/Order';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -22,7 +24,7 @@ export class CheckoutFormComponent implements OnInit {
     paymentmethod: ['', Validators.required],
   })
   
-  constructor(private cartService: CartService, private orderService: OrderService, private fb: FormBuilder) { }
+  constructor(private cartService: CartService, private orderService: OrderService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -38,10 +40,13 @@ export class CheckoutFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.customerForm.value);
-    //this.http.post ?
     let name = this.customerForm.value.name;
     let paymentMethod = this.customerForm.value.paymentmethod;
-    this.orderService.createOrder(name, paymentMethod);
+    this.orderService.createOrder(name, paymentMethod).subscribe((data: Order) => {
+      this.orderService.clearCart();
+      this.router.navigate(["confirmation"]);
+    })
+
   }
 
 }
