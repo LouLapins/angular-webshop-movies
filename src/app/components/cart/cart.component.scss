@@ -11,3 +11,15 @@
         @include cartStyle;
     }
 }
+
+@media screen and(min-width: 1200px) {
+    #cart {
+        .full-cart {
+            .cart-item {
+                img {
+                    width: 5vw;
+                }
+            }
+        }
+    }
+}

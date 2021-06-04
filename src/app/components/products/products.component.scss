@@ -1,6 +1,11 @@
 @import "../../../styles.scss";
 #all-products-list {
-    width: 100%;
-    flex-wrap: wrap;
     @include flexCenter(column);
+    flex-wrap: wrap;
+}
+
+@media screen and(min-width: 768px) {
+    #all-products-list {
+        flex-direction: row;
+    }
 }

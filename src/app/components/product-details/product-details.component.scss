@@ -24,13 +24,20 @@
     }
 }
 
-@media screen and(min-width: 768px) {
+@media screen and(min-width: 1200px) {
     .details-container {
         @include flexCenter(row);
+        .details-img,
+        .details-text {
+            margin: 0 2rem;
+        }
         .details-img {
             img {
-                height: 50vh;
+                height: 70vh;
             }
+        }
+        .details-text {
+            width: 40vw;
         }
     }
 }
