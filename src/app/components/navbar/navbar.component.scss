@@ -3,4 +3,11 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    background-color: #361047;
+    background-image: linear-gradient(to right, #361047, #8c1d72, #361047);
+    color: white;
+    width: 100%;
+    h1 {
+        font-size: 22px;
+    }
 }

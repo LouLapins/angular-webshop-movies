@@ -1,6 +1,7 @@
 <section id="cart">
-    <a class="back-button" routerLink="/"><i class="fas fa-backspace"></i></a>
+    <a class="back-button" routerLink="/"><i class="fas fa-times-circle"></i></a>
     <h3>Your cart</h3>
+
     <div *ngIf="cartItems.length === 0" class="emptyCart">
         <h1>Your cart is empty.</h1>
     </div>
@@ -21,9 +22,7 @@
 
     <div class="total" *ngIf="cartItems.length >= 1">
         <h3>Total price: {{totalPrice}} kr</h3>
-        <a routerLink="/cart" class="checkout-button">
-            Go to checkout
-        </a>
+        <a routerLink="/cart" class="checkout-button">Go to checkout</a>
     </div>
 
 
