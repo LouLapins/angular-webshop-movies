@@ -5,7 +5,8 @@
 }
 
 .checkout-button,
-.add-button {
+.add-button,
+.confirm-button {
     background-color: #8c1d72;
     color: white;
     text-transform: uppercase;
@@ -23,8 +24,10 @@
     right: 20px;
 }
 
-.nav-button {
-    font-size: 150%;
-    border: none;
-    color: inherit;
+.cart-button {
+    img {
+        height: 20px;
+    }
+    position: relative;
+    top: 6px;
 }

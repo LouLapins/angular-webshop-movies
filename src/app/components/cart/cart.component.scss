@@ -4,26 +4,10 @@
     color: black;
     padding: 3rem;
     @include flexCenter(column);
-    .cart-item {
-        @include flexCenter(row);
-        padding: 1rem;
-        margin: .5rem;
-        border-bottom: 1px solid lightgray;
-        img {
-            width: 20vw;
-        }
-        .cart-item-text {
-            width: 50vw;
-            p,
-            h5,
-            button {
-                margin: .5rem 0;
-            }
-        }
+    .empty-cart {
+        @include emptyStyle;
     }
-    .total {
-        h3 {
-            margin: 2rem 0;
-        }
+    .full-cart {
+        @include cartStyle;
     }
 }

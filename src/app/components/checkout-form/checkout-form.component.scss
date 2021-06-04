@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+#checkout {
+    background-color: white;
+    color: black;
+    padding: 3rem;
+    border: 1rem solid #ffdf7d63;
+    @include flexCenter(column);
+    .empty-cart {
+        @include emptyStyle;
+    }
+    .full-cart {
+        @include cartStyle;
+    }
+    .form {
+        @include flexCenter(column);
+        input {
+            width: 80%;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: .2rem;
+            border: 1px solid black;
+        }
+        p,
+        label {
+            font-size: 14px;
+            margin: .5rem 0;
+        }
+        .confirm-button {
+            margin: 2rem 0;
+        }
+    }
+}

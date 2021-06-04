@@ -19,8 +19,11 @@ export class CheckoutFormComponent implements OnInit {
 
   customerForm = this.fb.group({
     name: ['', Validators.required],
-    phone: ['', Validators.required],
     email: ['', Validators.required],
+    phone: ['', Validators.required],
+    street: ['', Validators.required],
+    pcode: ['', Validators.required],
+    city: ['', Validators.required],
     paymentmethod: ['', Validators.required],
   })
   
@@ -35,7 +38,6 @@ export class CheckoutFormComponent implements OnInit {
     this.cartService.getItems();
     this.totalPrice = this.cartService.getTotalPrice();
     
-    //let order = this.orderServive.orders.subscribe((data) => { console.log(data) })
   }
 
   onSubmit(): void {

@@ -4,3 +4,38 @@
     justify-content: center;
     flex-direction: $direction;
 }
+
+@mixin cartStyle {
+    @include flexCenter(column);
+    h3,
+    .total {
+        margin: 1rem 0;
+    }
+    .cart-item {
+        @include flexCenter(row);
+        padding: 2rem;
+        border-bottom: 1px solid lightgray;
+        img {
+            width: 20vw;
+        }
+        .cart-item-text {
+            width: 50vw;
+            p,
+            h5,
+            button {
+                margin: .5rem 0;
+            }
+        }
+    }
+    .total {
+        h3 {
+            margin: 2rem 0;
+        }
+    }
+}
+
+@mixin emptyStyle {
+    @include flexCenter(column);
+    width: 100vw;
+    height: 60vh;
+}

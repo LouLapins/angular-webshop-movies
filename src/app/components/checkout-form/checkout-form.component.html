@@ -1,15 +1,44 @@
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="Full name" formControlName="name" />
-    <input type="text" placeholder="Phone number" formControlName="phone" />
-    <input type="text" placeholder="Email address" formControlName="email" />
-    <select name="dropdown" placeholder="Payment Method" formControlName="paymentmethod">
+<section id="checkout">
+    <a class="back-button" routerLink="/"><i class="fas fa-times-circle"></i></a>
+
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <h1>Your cart is empty. Please go back and select some movies.</h1>
+    </div>
+
+    <div class="full-cart">
+        <h3>Checkout</h3>
+        <p>These are your selected items</p>
+
+        <div class="cart-item" *ngFor="let i of cartItems">
+            <img [src]="i.imageUrl" alt="{{i.name}}">
+            <div class="cart-item-text">
+                <p>{{i.name}} ({{i.year}})</p>
+                <h5>{{ i.price }} kr</h5>
+            </div>
+        </div>
+
+        <div class="total" *ngIf="cartItems.length >= 1">
+            <h3>Total price: {{totalPrice}} kr</h3>
+            <h3>Shipping: free</h3>
+        </div>
+    </div>
+
+    <form class="form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <p>Please fill out your address and contact details to confirm your order</p>
+        <input type="text" placeholder="Full name" formControlName="name" />
+        <input type="text" placeholder="Email address" formControlName="email" />
+        <input type="text" placeholder="Phone number" formControlName="phone" />
+
+        <input type="text" placeholder="Street address" formControlName="street" />
+        <input type="text" placeholder="Post code" formControlName="pcode" />
+        <input type="text" placeholder="City" formControlName="city" />
+
+        <label for="paymentmethod">Select your payment method</label>
+        <select name="dropdown" formControlName="paymentmethod">
         <option value="VISA">VISA</option>
         <option value="Mastercard">Mastercard</option>
         <option value="American Express">American Express</option>
-    </select>
-    <button type="submit" [disabled]="customerForm.invalid">Send</button>
-</form>
-
-<p>
-    {{ customerForm.value | json }}
-</p>
+        </select>
+        <button class="confirm-button" type="submit" [disabled]="customerForm.invalid">Confirm order</button>
+    </form>
+</section>
