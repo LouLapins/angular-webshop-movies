@@ -1,0 +1,15 @@
+<div class="details-container">
+    <a class="back-button" routerLink="/"><i class="fas fa-times-circle"></i></a>
+
+    <div class="details-img">
+        <img [src]="product.imageUrl" alt="{{product.name}}">
+    </div>
+
+    <div class="details-text">
+        <h3>{{product.name}} ({{product.year}})</h3>
+        <p>{{product.description}}</p>
+        <h5>{{product.price}} kr</h5>
+
+        <button class="add-button" (click)="addToCart(product)">Add to cart</button>
+    </div>
+</div>

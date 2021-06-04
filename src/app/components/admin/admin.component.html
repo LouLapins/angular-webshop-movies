@@ -1,0 +1,12 @@
+<h1>All received orders</h1>
+<div *ngFor="let o of orders" class="order-info-container">
+    <h3>Order {{o.id}}</h3>
+    <p> <span>Order date: </span>{{o.created}}</p>
+    <h5>Products:</h5>
+    <p>{{o.orderRows.length}} items</p>
+    <ul *ngFor="let i of o.orderRows">
+        <li>Product ID {{i.productId}}</li>
+    </ul>
+    <p> <span>Total amount paid: </span>{{o.totalPrice}} SEK</p>
+    <p> <span>Payment Method: </span>{{o.paymentMethod}}</p>
+</div>

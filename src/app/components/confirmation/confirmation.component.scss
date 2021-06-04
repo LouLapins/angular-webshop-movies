@@ -1,0 +1,7 @@
+@import "../../../styles.scss";
+#confirmation {
+    @include emptyStyle;
+    p {
+        margin: 2rem;
+    }
+}

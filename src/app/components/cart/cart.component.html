@@ -1,0 +1,25 @@
+<section id="cart">
+    <a class="back-button" routerLink="/"><i class="fas fa-times-circle"></i></a>
+
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <h1>Your cart is empty.</h1>
+    </div>
+
+    <div *ngIf="cartItems.length >= 1" class="full-cart">
+        <h3>In your cart</h3>
+        <div class="cart-item" *ngFor="let i of cartItems">
+            <img [src]="i.imageUrl" alt="{{i.name}}">
+            <div class="cart-item-text">
+                <p>{{i.name}} ({{i.year}})</p>
+                <h5>{{ i.price }} kr</h5>
+                <button class="text-button" (click)="removeItem(i.id)"><i class="far fa-trash-alt"></i> Remove</button>
+            </div>
+        </div>
+
+        <div class="total">
+            <h3>Total price: {{totalPrice}} kr</h3>
+            <a routerLink="/checkout" class="checkout-button">Go to checkout</a>
+        </div>
+    </div>
+
+</section>

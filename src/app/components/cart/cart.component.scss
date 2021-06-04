@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+#cart {
+    background-color: white;
+    color: black;
+    padding: 3rem;
+    @include flexCenter(column);
+    .empty-cart {
+        @include emptyStyle;
+    }
+    .full-cart {
+        @include cartStyle;
+    }
+}
+
+@media screen and(min-width: 1200px) {
+    #cart {
+        .full-cart {
+            .cart-item {
+                img {
+                    width: 5vw;
+                }
+            }
+        }
+    }
+}

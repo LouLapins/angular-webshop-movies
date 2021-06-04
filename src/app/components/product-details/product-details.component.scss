@@ -1,0 +1,43 @@
+@import "../../../styles.scss";
+.details-container {
+    @include flexCenter(column);
+    padding: 1rem;
+    height: 100vh;
+    .details-img {
+        img {
+            height: 50vh;
+        }
+    }
+    .back-button {
+        align-self: flex-end;
+    }
+    .details-text {
+        h3,
+        h5,
+        p,
+        button {
+            margin-top: 1.5rem;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and(min-width: 1200px) {
+    .details-container {
+        @include flexCenter(row);
+        .details-img,
+        .details-text {
+            margin: 0 2rem;
+        }
+        .details-img {
+            img {
+                height: 70vh;
+            }
+        }
+        .details-text {
+            width: 40vw;
+        }
+    }
+}

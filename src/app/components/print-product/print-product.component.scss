@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+.product-container {
+    cursor: pointer;
+    width: 90vw;
+    height: 70vh;
+    @include flexCenter(column);
+    justify-content: flex-start;
+    padding: 2rem;
+    margin: .5rem 0;
+    background-color: rgb(24, 23, 23);
+    color: white;
+    border-radius: 30px;
+    img {
+        height: 80%;
+    }
+    h5 {
+        margin: 2rem 1rem;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+@media screen and(min-width: 768px) {
+    .product-container {
+        width: 70vw;
+        height: 60vh;
+        margin: 1rem 1rem;
+    }
+}
+
+@media screen and(min-width: 1200px) {
+    .product-container {
+        width: 30vw;
+        height: 60vh;
+    }
+}
